@@ -1,0 +1,16 @@
+﻿body {
+}
+$banner-height: 300px;
+
+.banner {
+    height: $banner-height;
+    background-color: lightgray;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .banner-text {
+        color: white;
+        text-align: center;
+    }
+}

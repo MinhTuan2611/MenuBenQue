@@ -1,0 +1,113 @@
+﻿@page
+@using System.ComponentModel;
+@using ThuMuaHangWeb.Areas.Identity.Pages.Account.Manage
+@model ThuMuaHangWeb.Areas.Identity.Pages.Account.Manage.ManageUserAuthorityModel
+@{
+    ViewData["Title"] = "Phân Quyền";
+    ViewData["ActivePage"] = ManageNavPages.ManageUserAuthority;
+    string GetEnumDescription(Enum value)
+    {
+        var field = value.GetType().GetField(value.ToString());
+
+        var attribute = Attribute.GetCustomAttribute(field, typeof(DescriptionAttribute)) as DescriptionAttribute;
+
+        return attribute == null ? value.ToString() : attribute.Description;
+    }
+}
+
+<h3>@ViewData["Title"]</h3>
+<partial name="_StatusMessage" for="StatusMessage" />
+<form id="user-role" method="POST">
+    <div class="row my-2">
+        <div class="col-12 col-md-10">
+            <div class="row">
+                <div class="col-md-7">
+                    <div class="row form-group mb-1">
+                        <div class="col-12">
+                            <input id="search" asp-for="SearchValue" class="form-control" placeholder="Nhập username, Họ và tên, Email, Đơn vị cơ sở" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="row form-group mb-1">
+                        <div class="col-12 col-md-4 text-vertical-center">Phân Quyền:</div>
+                        <div class="col-12 col-md-8">
+                            <select asp-for="PhanQuyenSearch" class="form-control">
+                                <option value="">Chọn phân quyền</option>
+                                @foreach (var item in Model.lstPhanQuyenSelect)
+                                {
+                                    <option value="@item.Value">@item.Text</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-2">
+            <div class="form-group row">
+                <div class="col-6">
+                    <button class="w-100 btn btn-outline-primary" type="submit">Tìm kiếm</button>
+                </div>
+                <div class="col-6">
+                    <a asp-page="ManageUserAuthority" class="w-100 btn btn-outline-secondary">Xóa lọc</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table id="list-users" class="table table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        UserName
+                    </th>
+                    <th>
+                        Họ và tên
+                    </th>
+                    <th>
+                        Email
+                    </th>
+                    <th>
+                        Phân Quyền
+                    </th>
+                    <th>
+                        Đơn vị cơ sở
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in @Model.lstUserPayload)
+                {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UserName)
+                    </td>
+                    <td>
+                        @item.LastName @item.FirstName
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        @GetEnumDescription(item.Role)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BaseName)
+                    </td>
+                    <td>
+                        <a asp-page="UserRole" asp-route-userId="@item.Id"><i class="fa fa-pencil-square-o"></i></a> |
+                        <a asp-page-handler="DeleteUser" asp-route-userId="@item.Id"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+   
+}

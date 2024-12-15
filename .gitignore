@@ -1,0 +1,14 @@
+
+.vs/
+
+*.vsidx
+
+ThuMuaHangWeb/bin/
+
+ThuMuaHangWeb/obj/
+*.cache
+
+*.user
+
+ThuMuaHangWeb/.config/dotnet-tools.json
+

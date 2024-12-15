@@ -1,0 +1,240 @@
+﻿html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+.banner {
+    height: $banner-height;
+    /*background-color: lightgray;*/
+    display: flex;
+    align-items: center;
+    justify-content: center;   
+}
+
+.banner-text {
+    /*color: white;*/
+    text-align: center;
+}
+
+.container-xxl {
+    max-width: 1850px !important;
+}
+
+.container-body {
+    min-height: 825px;
+}
+
+.form-control.is-valid, .was-validated .form-control:valid {
+    border-color: #dee2e6 !important;
+    background-image: unset !important;
+    padding-right: inherit !important;
+}
+
+.was-validated .form-select:valid {
+    border-color: #dee2e6 !important;
+    background-image: url(data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e) !important;
+}
+
+.w-quantity {
+    width: 100px;
+}
+
+.w-110px {
+    width: 110px;
+}
+
+.w-200px {
+    width: 200px;
+}
+
+.w-150px{
+    width: 150px;
+}
+
+.header-midle-width {
+    max-width: 400px;
+    min-width: 200px;
+}
+
+th > p {
+    margin:0px !important;
+}
+th {
+    vertical-align: middle !important;
+}
+table > thead > tr > th {
+    /*background-color: #366092 !important;*/
+    background-color: #26a69a !important;
+    color: white;
+    border-bottom-width: 1px;
+}
+
+table > tbody > tr:nth-child(odd) > td {
+    /*background-color: #B8CCE4 !important;*/
+    background-color: #ffffff;
+    border-bottom-width: 1px;
+}
+
+table > tbody > tr:nth-child(even) > td {
+    /*background-color: #DCE6F1 !important;*/
+    background-color: #ddf2f0;
+    border-bottom-width: 1px;
+}
+
+.table-order {
+    border-collapse: separate !important;
+    border-spacing: 0 !important;
+}
+
+.table-responsive-container {
+    overflow: auto;
+    max-height: 700px;
+}
+
+.table-froozen-header {
+    overflow: auto;
+}
+
+
+/* Đặt chiều rộng cho các cột trong header */
+.table-froozen-header > thead > tr > th {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+.text-vertical-center {
+    align-items: center;
+    display: flex;
+}
+
+.z-index-frozen-header {
+    z-index: 100 !important;
+}
+
+@media only screen and (max-width: 767px) {
+    .narbar-dropdown-menu {
+        border: 0 !important;
+        background-color: transparent !important;
+        padding-left: 10px !important;
+    }
+
+    .width-131px {
+        text-align: unset !important;
+    }
+
+    .table-responsive-container {
+        overflow: auto;
+        max-height: 750px;
+    }
+
+}
+
+.register {
+    padding-bottom: 1em;
+}
+
+.navbar {
+    background-color: #50c785 !important
+}
+
+.width-131px {
+    width: 132px;
+    text-align: center;
+}
+
+.ui-autocomplete {
+    max-height: 300px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    z-index: 1100 !important;
+}
+
+.font-small {
+    font-size: small;
+    font-weight: lighter;
+}
+
+.background-danger > td {
+    background-color: #ffacbb !important;
+}
+
+.block-ui {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,.4);
+    background-color: hsla(0,0%,50%,.2);
+    transition-property: background-color;
+    display: flex;
+    position: fixed;
+    align-items: center;
+    justify-content: center;
+    z-index: 99999 !important;
+}
+
+.header-product-code {
+    min-width: 170px
+}
+
+.header-product-name {
+    min-width: 300px
+}
+
+.header-product-unit {
+    min-width: 80px
+}
+
+.header-quantity {
+    min-width: 100px
+}
+
+.header-price {
+    min-width: 125px
+}
+
+.header-note {
+    min-width: 150px
+}
+
+.header-action {
+    min-width: 50px
+}
+
+.header-amount {
+    min-width: 140px
+}
+
+.sticky-first-column {
+    position: sticky !important;
+    left: -12px;
+}
+
+.sticky-second-column {
+    position: sticky !important;
+    left: 68px;
+}
+
+.sticky-third-column {
+    position: sticky !important;
+    left: 238px;
+}
+
+.width-label{
+    min-width: 80px;
+}

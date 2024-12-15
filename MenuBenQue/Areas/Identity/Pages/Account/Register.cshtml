@@ -1,0 +1,58 @@
+﻿@page
+@model RegisterModel
+@{
+    ViewData["Title"] = "Đăng ký tài khoản";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div class="row">
+    <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+        <h5>Thông tin người dùng</h5>
+        <hr />
+        <partial name="_StatusMessage" for="StatusMessage" />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-floating register">
+            <input asp-for="Input.LastName" class="form-control" autocomplete="lastname" aria-required="true" />
+            <label asp-for="Input.LastName"></label>
+            <span asp-validation-for="Input.LastName" class="text-danger"></span>
+        </div>
+        <div class="form-floating register">
+            <input asp-for="Input.FirstName" class="form-control" autocomplete="firstname" aria-required="true" />
+            <label asp-for="Input.FirstName"></label>
+            <span asp-validation-for="Input.FirstName" class="text-danger"></span>
+        </div>
+        <div class="form-floating register">
+            <input asp-for="Input.Phone" class="form-control" autocomplete="phone" aria-required="true" />
+            <label asp-for="Input.Phone"></label>
+            <span asp-validation-for="Input.Phone" class="text-danger"></span>
+        </div>
+        <div class="form-floating register">
+            <input asp-for="Input.Email" class="form-control" autocomplete="email" aria-required="true" />
+            <label asp-for="Input.Email"></label>
+            <span asp-validation-for="Input.Email" class="text-danger"></span>
+        </div>
+        <h5>Thông tin tài khoản</h5>
+        <hr />
+        <div class="form-floating register">
+            <input asp-for="Input.Username" class="form-control" autocomplete="username" aria-required="true" />
+            <label asp-for="Input.Username">Tài khoản</label>
+            <span asp-validation-for="Input.Username" class="text-danger"></span>
+        </div>
+        <div class="form-floating register">
+            <input asp-for="Input.Password" class="form-control" autocomplete="new-password" aria-required="true" />
+            <label asp-for="Input.Password">Mật khẩu</label>
+            <span asp-validation-for="Input.Password" class="text-danger"></span>
+        </div>
+        <div class="form-floating register">
+            <input asp-for="Input.ConfirmPassword" class="form-control" autocomplete="new-password" aria-required="true" />
+            <label asp-for="Input.ConfirmPassword">Xác nhận mật khẩu</label>
+            <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+        </div>
+        <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Đăng ký tài khoản</button>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

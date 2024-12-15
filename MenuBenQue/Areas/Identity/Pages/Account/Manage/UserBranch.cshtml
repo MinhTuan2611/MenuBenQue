@@ -1,0 +1,36 @@
+﻿@page
+@model ThuMuaHangWeb.Areas.Identity.Pages.Account.Manage.Users.UserBranchModel
+@{    
+    ViewData["Title"] = "Phân quyền chi nhánh";    
+    ViewData["ActivePage"] = ManageNavPages.ManageUserAuthority;
+}
+
+
+<h3>@ViewData["Title"]</h3>
+<partial name="_StatusMessage" for="StatusMessage" />
+<div class="row">
+    <form id="registerForm" asp-route-updateUserId="@Model.updateUserId" method="post">
+        <hr />
+        <div class="form-floating">
+            <input asp-for="user.UserName" class="form-control"aria-required="true" disabled/>
+            <label asp-for="user.UserName"></label>
+        </div>
+        <div class="form-floating">
+            <input asp-for="user.Email" class="form-control" aria-required="true" disabled/>
+            <label asp-for="user.Email"></label>
+        </div>
+        <div class="form-floating">
+            <select id="selectBranch" asp-for="updateBranchId" class="form-control" asp-items="@Model.lstBranchs" required> 
+                <option value="0">Chọn chi nhánh...</option>
+                <option value="-1">Xóa chi nhánh...</option>
+            </select>
+            <label asp-for="updateBranchId">Chi Nhánh</label>
+        </div>
+        <button id="updateUserRole" type="submit" class="w-100 btn btn-lg btn-primary">Hoàn Thành</button>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+   
+}
