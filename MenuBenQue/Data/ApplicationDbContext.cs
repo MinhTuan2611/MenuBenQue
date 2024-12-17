@@ -17,7 +17,8 @@ namespace ThuMuaHangWeb.Data
             this.Database.SetCommandTimeout(TimeSpan.FromSeconds(240));
         }
 
-        public DbSet<Product> Products { get; set; }
-        
+        public DbSet<MonAn> MonAns { get; set; }
+        public DbSet<NhomMonAn> NhomMonAn { get; set; }
+
     }
 }
