@@ -48,6 +48,7 @@ namespace MenuBenQue.Controllers
         // GET: MonAns/Create
         public IActionResult Create()
         {
+            ViewBag.NhomMonAn = _context.NhomMonAn.Where(n => n.Active == true).ToList();
             return View();
         }
 
@@ -56,8 +57,20 @@ namespace MenuBenQue.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("MonId,TenMon,GiaMon,DonVi,GiaMonKhuyenMai,Active,CreateDate,UpdateDate")] MonAn monAn)
+        public async Task<IActionResult> Create(IMonAn IMonAn)
         {
+
+            MonAn monAn = new MonAn
+            {
+                TenMon = IMonAn.TenMon,
+                GiaMon = IMonAn.GiaMon,
+                DonVi = IMonAn.DonVi,
+                NhomMonAn = _context.NhomMonAn.FirstOrDefault(n => n.NhomId == IMonAn.NhomMonAn),
+                GiaMonKhuyenMai = IMonAn.GiaMonKhuyenMai,
+                Active = IMonAn.Active
+            };
+
+            ViewBag.NhomMonAn = _context.NhomMonAn.Where(n => n.Active == true).ToList();
             if (ModelState.IsValid)
             {
                 _context.Add(monAn);
