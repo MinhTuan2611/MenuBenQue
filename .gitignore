@@ -3,12 +3,11 @@
 
 *.vsidx
 
-ThuMuaHangWeb/bin/
+MenuBenQue/bin//bin/
 
-ThuMuaHangWeb/obj/
+MenuBenQue/bin//obj/
 *.cache
 
 *.user
 
-ThuMuaHangWeb/.config/dotnet-tools.json
-
+MenuBenQue/bin//.config/dotnet-tools.json

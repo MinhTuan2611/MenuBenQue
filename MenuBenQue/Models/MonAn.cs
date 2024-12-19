@@ -48,7 +48,7 @@ namespace ThuMuaHangWeb.Models
 
     public class IDisplay
     {
-        public NhomMonAn NhomMonAn { get; set; }
+        public NhomMonAn Key { get; set; }
         public List<MonAn> MonAns { get; set; }
     }
 }

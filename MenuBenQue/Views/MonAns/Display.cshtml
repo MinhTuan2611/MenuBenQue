@@ -2,14 +2,34 @@
 
 @{
     ViewData["Title"] = "Index";
-    var groupedData = Model.GroupBy(monAn => monAn.NhomMonAn);
-}
+    var groupedData = Model.GroupBy(monAn => monAn.NhomMonAn).OrderBy(g =>g.Key.Order);
 
-@foreach (var group in groupedData)
-{
-    <p>Nhóm: @group.Key.TenNhom </p>
-    foreach (MonAn monAn in group)
+    string ConvertGia(decimal gia)
     {
-        <p>@monAn.TenMon</p>
+        if (gia >= 1000)
+        {
+            return (gia / 1000).ToString("N0");
+        }
+        return gia.ToString("N0");
     }
 }
+
+<div class="favorite-dishes">
+    
+    @foreach (var group in groupedData)
+    {
+        <h1>@group.Key.TenNhom</h1>
+        @*<h2>@group.Key.TenNhom</h2>*@
+            <div class="menu">
+                <ul>
+                @foreach (var mon in group)
+                {
+                            <li>
+                                <span class="dish-name">@mon.TenMon</span>
+                        <span class="dish-price"> <span class="dish-price-detail">@ConvertGia(@mon.GiaMon)</span>k/@mon.DonVi</span>
+                            </li>
+                }
+                </ul>
+            </div>
+    }
+</div>

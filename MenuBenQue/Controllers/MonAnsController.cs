@@ -21,10 +21,8 @@ namespace MenuBenQue.Controllers
 
         public async Task<IActionResult> Display()
         {
-            List<MonAn> data = await _context.MonAns.Include(m => m.NhomMonAn).Where(m => m.Active == true).ToListAsync();
-
             return _context.MonAns != null ?
-                        View(await _context.MonAns.Include(m=>m.NhomMonAn).ToListAsync()) :
+                        View(await _context.MonAns.Include(m => m.NhomMonAn).Where(m => m.Active == true).ToListAsync()) :
                         Problem("Entity set 'ApplicationDbContext.MonAns'  is null.");
         }
 

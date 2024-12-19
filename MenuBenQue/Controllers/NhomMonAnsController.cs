@@ -56,7 +56,7 @@ namespace MenuBenQue.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("NhomId,TenNhom,Active,CreateDate,UpdateDate")] NhomMonAn nhomMonAn)
+        public async Task<IActionResult> Create([Bind("NhomId,TenNhom,Active,Order, CreateDate,UpdateDate")] NhomMonAn nhomMonAn)
         {
             if (ModelState.IsValid)
             {
@@ -88,7 +88,7 @@ namespace MenuBenQue.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("NhomId,TenNhom,Active,CreateDate,UpdateDate")] NhomMonAn nhomMonAn)
+        public async Task<IActionResult> Edit(int id, [Bind("NhomId,TenNhom,Active,Order, CreateDate,UpdateDate")] NhomMonAn nhomMonAn)
         {
             if (id != nhomMonAn.NhomId)
             {

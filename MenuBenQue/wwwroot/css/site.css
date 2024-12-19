@@ -238,3 +238,48 @@ table > tbody > tr:nth-child(even) > td {
 .width-label{
     min-width: 80px;
 }
+
+.favorite-dishes {
+    font-family: "Arial", sans-serif;
+    color: #2d4739;
+    text-align: center;
+    padding: 20px;
+}
+
+    .favorite-dishes h1 {
+        font-size: 2.5rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        margin-bottom: 20px;
+        color: #4c6c52;
+    }
+
+.menu ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.menu li {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    border-bottom: 1px dashed #cfcfcf;
+    padding-bottom: 5px;
+}
+
+.menu .dish-name {
+    font-weight: bold;
+    text-align: left;
+}
+
+.menu .dish-price {
+    text-align: right;
+    color: #2d4739;
+    /*font-weight: bold;*/
+}
+
+    .menu .dish-price .dish-price-detail {
+        font-size: 30px;
+        font-weight: bolder;
+    }
