@@ -45,4 +45,10 @@ namespace ThuMuaHangWeb.Models
         public int NhomMonAn { get; set; }
         public bool? Active { get; set; }
     }
+
+    public class IDisplay
+    {
+        public NhomMonAn NhomMonAn { get; set; }
+        public List<MonAn> MonAns { get; set; }
+    }
 }

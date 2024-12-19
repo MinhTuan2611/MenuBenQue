@@ -1,0 +1,15 @@
+﻿@model IEnumerable<ThuMuaHangWeb.Models.MonAn>
+
+@{
+    ViewData["Title"] = "Index";
+    var groupedData = Model.GroupBy(monAn => monAn.NhomMonAn);
+}
+
+@foreach (var group in groupedData)
+{
+    <p>Nhóm: @group.Key.TenNhom </p>
+    foreach (MonAn monAn in group)
+    {
+        <p>@monAn.TenMon</p>
+    }
+}

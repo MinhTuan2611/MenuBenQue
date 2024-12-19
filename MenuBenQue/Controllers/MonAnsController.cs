@@ -19,6 +19,15 @@ namespace MenuBenQue.Controllers
             _context = context;
         }
 
+        public async Task<IActionResult> Display()
+        {
+            List<MonAn> data = await _context.MonAns.Include(m => m.NhomMonAn).Where(m => m.Active == true).ToListAsync();
+
+            return _context.MonAns != null ?
+                        View(await _context.MonAns.Include(m=>m.NhomMonAn).ToListAsync()) :
+                        Problem("Entity set 'ApplicationDbContext.MonAns'  is null.");
+        }
+
         // GET: MonAns
         public async Task<IActionResult> Index()
         {

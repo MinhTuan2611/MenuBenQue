@@ -1,15 +1,18 @@
 ﻿@model IEnumerable<ThuMuaHangWeb.Models.MonAn>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Display";
 }
 
-<h1>Index</h1>
+<div class="banner">
+            <div class="banner-text">
+                <h1>Danh Sách Món Ăn</h1>
+            </div>
+        </div>
+        <hr />
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
+<a type="button" class="btn btn-outline-primary mt-5 mb-2" asp-action="Create">Thêm món ăn</a>
+<table class="table table-bordered table-striped">
     <thead>
         <tr>
             <th>
@@ -22,16 +25,14 @@
                 @Html.DisplayNameFor(model => model.DonVi)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.NhomMonAn)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.GiaMonKhuyenMai)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Active)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CreateDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.UpdateDate)
             </th>
             <th></th>
         </tr>
@@ -49,21 +50,27 @@
                 @Html.DisplayFor(modelItem => item.DonVi)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.NhomMonAn.TenNhom)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.GiaMonKhuyenMai)
             </td>
+            
+            @if (@item.Active == true)
+            {
+                <td>Đang bán</td>
+            }
+            else
+            {
+                <td>Ngừng bán</td>
+            }
+
             <td>
-                @Html.DisplayFor(modelItem => item.Active)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CreateDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UpdateDate)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.MonId">Edit</a> |
+                    <a asp-action="Edit" asp-route-id="@item.MonId"><i class="fa fa-pencil-square-o pe-2"></i></a>
+                    <a asp-action="Delete" asp-route-id="@item.MonId" class="text-danger"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+         @*       <a asp-action="Edit" asp-route-id="@item.MonId">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.MonId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.MonId">Delete</a>
+                <a asp-action="Delete" asp-route-id="@item.MonId">Delete</a>*@
             </td>
         </tr>
 }
