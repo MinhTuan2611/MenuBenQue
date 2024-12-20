@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -10,6 +11,7 @@ using ThuMuaHangWeb.Models;
 
 namespace MenuBenQue.Controllers
 {
+    [Authorize]
     public class MonAnsController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -18,7 +20,7 @@ namespace MenuBenQue.Controllers
         {
             _context = context;
         }
-
+        [AllowAnonymous]
         public async Task<IActionResult> Display()
         {
             return _context.MonAns != null ?
@@ -30,7 +32,7 @@ namespace MenuBenQue.Controllers
         public async Task<IActionResult> Index()
         {
               return _context.MonAns != null ? 
-                          View(await _context.MonAns.ToListAsync()) :
+                          View(await _context.MonAns.Include(m => m.NhomMonAn).OrderBy(m =>m.NhomMonAn.Order).ToListAsync()) :
                           Problem("Entity set 'ApplicationDbContext.MonAns'  is null.");
         }
 
@@ -95,11 +97,12 @@ namespace MenuBenQue.Controllers
                 return NotFound();
             }
 
-            var monAn = await _context.MonAns.FindAsync(id);
+            var monAn = await _context.MonAns.Include(m => m.NhomMonAn).FirstAsync(m => m.MonId == id);
             if (monAn == null)
             {
                 return NotFound();
             }
+            ViewBag.NhomMonAn = _context.NhomMonAn.Where(n => n.Active == true).ToList();
             return View(monAn);
         }
 
@@ -108,8 +111,19 @@ namespace MenuBenQue.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("MonId,TenMon,GiaMon,DonVi,GiaMonKhuyenMai,Active,CreateDate,UpdateDate")] MonAn monAn)
+        public async Task<IActionResult> Edit(int id, IMonAn IMonAn)
         {
+            MonAn monAn = new MonAn
+            {
+                MonId = (int)IMonAn.MonId,
+                TenMon = IMonAn.TenMon,
+                GiaMon = IMonAn.GiaMon,
+                DonVi = IMonAn.DonVi,
+                NhomMonAn = _context.NhomMonAn.FirstOrDefault(n => n.NhomId == IMonAn.NhomMonAn),
+                GiaMonKhuyenMai = IMonAn.GiaMonKhuyenMai,
+                Active = IMonAn.Active,
+                UpdateDate = DateTime.Now
+            };
             if (id != monAn.MonId)
             {
                 return NotFound();
@@ -159,13 +173,13 @@ namespace MenuBenQue.Controllers
         // POST: MonAns/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(int id, [Bind("MonId")] int monId)
         {
             if (_context.MonAns == null)
             {
                 return Problem("Entity set 'ApplicationDbContext.MonAns'  is null.");
             }
-            var monAn = await _context.MonAns.FindAsync(id);
+            var monAn = await _context.MonAns.FindAsync(monId);
             if (monAn != null)
             {
                 _context.MonAns.Remove(monAn);

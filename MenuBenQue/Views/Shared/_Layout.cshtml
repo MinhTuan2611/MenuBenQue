@@ -18,12 +18,12 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css" />
 </head>
 <body>
-    @if (!(currentController == "MonAns" && currentAction == "Display"))
+    @if (!(currentController == "Home" && currentAction == "Index"))
     {
         <header>
             <nav class="navbar navbar-expand-lg navbar-toggleable-lg navbar-light border-bottom box-shadow mb-3">
                 <div class="container-fluid">
-                    <a class="navbar-brand" asp-area="" asp-controller="MonAns" asp-action="Display">Bến Quê</a>
+                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="">Bến Quê</a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
@@ -78,7 +78,7 @@
             @RenderBody()
         </main>
     </div> 
-    @if (!(currentController == "MonAns" && currentAction == "Display"))
+    @if (!(currentController == "Home" && currentAction == "Index"))
     {
         <footer class="border-top footer text-muted position-relative">
             <div class="container">

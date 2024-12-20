@@ -14,22 +14,29 @@
     }
 }
 
+
 <div class="favorite-dishes">
     
     @foreach (var group in groupedData)
     {
-        <h1>@group.Key.TenNhom</h1>
-        @*<h2>@group.Key.TenNhom</h2>*@
+        <div class="group">
+            <h1>@group.Key.TenNhom</h1>
             <div class="menu">
                 <ul>
                 @foreach (var mon in group)
                 {
-                            <li>
-                                <span class="dish-name">@mon.TenMon</span>
+                    <li class="align-items-center">
+                        <span class="dish-name">@mon.TenMon</span>
                         <span class="dish-price"> <span class="dish-price-detail">@ConvertGia(@mon.GiaMon)</span>k/@mon.DonVi</span>
-                            </li>
+                    </li>
                 }
                 </ul>
             </div>
+        </div>
+       
     }
+</div>
+
+<div class="edit-icon">
+    <a class="nav-link text-dark" asp-area="" asp-controller="MonAns" asp-action=""><i class="fa fa-pencil"></i></a>
 </div>

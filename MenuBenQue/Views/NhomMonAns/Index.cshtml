@@ -4,25 +4,25 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<div class="banner">
+    <div class="banner-text">
+        <h1>Danh Sách Nhóm Món Ăn</h1>
+    </div>
+</div>
+<hr />
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
+<a type="button" class="btn btn-outline-primary mt-5 mb-2" asp-action="Create">Thêm nhóm món ăn</a>
+<table class="table table-bordered table-striped">
     <thead>
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.TenNhom)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.Order)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.Active)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CreateDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.UpdateDate)
             </th>
             <th></th>
         </tr>
@@ -34,18 +34,18 @@
                 @Html.DisplayFor(modelItem => item.TenNhom)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Active)
+                @Html.DisplayFor(modelItem => item.Order)
             </td>
+            @if (@item.Active == true)
+            {
+                <td>Đang bán</td>
+            }
+            else
+            {
+                <td>Ngừng bán</td>
+            }
             <td>
-                @Html.DisplayFor(modelItem => item.CreateDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UpdateDate)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.NhomId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.NhomId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.NhomId">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.NhomId"><i class="fa fa-pencil-square-o pe-2"></i></a>
             </td>
         </tr>
 }

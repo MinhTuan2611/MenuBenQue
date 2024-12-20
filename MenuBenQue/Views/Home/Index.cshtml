@@ -1,8 +1,42 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model IEnumerable<ThuMuaHangWeb.Models.MonAn>
+
+@{
+    ViewData["Title"] = "Index";
+    var groupedData = Model.GroupBy(monAn => monAn.NhomMonAn).OrderBy(g => g.Key.Order);
+
+    string ConvertGia(decimal gia)
+    {
+        if (gia >= 1000)
+        {
+            return (gia / 1000).ToString("N0");
+        }
+        return gia.ToString("N0");
+    }
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+
+<div class="favorite-dishes">
+
+    @foreach (var group in groupedData)
+    {
+        <div class="group">
+            <h1>@group.Key.TenNhom</h1>
+            <div class="menu">
+                <ul>
+                    @foreach (var mon in group)
+                    {
+                        <li class="align-items-center">
+                            <span class="dish-name">@mon.TenMon</span>
+                            <span class="dish-price"> <span class="dish-price-detail">@ConvertGia(@mon.GiaMon)</span>k/@mon.DonVi</span>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+
+    }
+</div>
+
+<div class="edit-icon">
+    <a class="nav-link text-dark" asp-area="" asp-controller="MonAns" asp-action=""><i class="fa fa-pencil"></i></a>
 </div>

@@ -5,11 +5,11 @@
 }
 
 <div class="banner">
-            <div class="banner-text">
-                <h1>Danh Sách Món Ăn</h1>
-            </div>
-        </div>
-        <hr />
+    <div class="banner-text">
+        <h1>Danh Sách Món Ăn</h1>
+    </div>
+</div>
+<hr />
 
 <a type="button" class="btn btn-outline-primary mt-5 mb-2" asp-action="Create">Thêm món ăn</a>
 <table class="table table-bordered table-striped">
@@ -43,8 +43,8 @@
             <td>
                 @Html.DisplayFor(modelItem => item.TenMon)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.GiaMon)
+            <td class="text-end">
+                @item.GiaMon.ToString("#,##0")
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.DonVi)
@@ -52,8 +52,8 @@
             <td>
                 @Html.DisplayFor(modelItem => item.NhomMonAn.TenNhom)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.GiaMonKhuyenMai)
+                <td class="text-end">
+                 @item.GiaMonKhuyenMai?.ToString("#,##0")
             </td>
             
             @if (@item.Active == true)
@@ -67,7 +67,8 @@
 
             <td>
                     <a asp-action="Edit" asp-route-id="@item.MonId"><i class="fa fa-pencil-square-o pe-2"></i></a>
-                    <a asp-action="Delete" asp-route-id="@item.MonId" class="text-danger"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                    @*<a asp-action="Delete" asp-route-id="@item.MonId" class="text-danger"><i class="fa fa-trash-o" aria-hidden="true"></i></a>*@
+                    <a href="#" id="@item.MonId" data-product="@item.TenMon" class="btnDelete text-danger"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
          @*       <a asp-action="Edit" asp-route-id="@item.MonId">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.MonId">Details</a> |
                 <a asp-action="Delete" asp-route-id="@item.MonId">Delete</a>*@
@@ -76,3 +77,47 @@
 }
     </tbody>
 </table>
+
+<!-- Modal -->
+    <div class="modal fade" id="confirmModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header d-flex justify-content-center">
+                    <h1 class="modal-title fs-5" id="confirmModalLabel">Xác nhận</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                Bạn chắc chắn muốn xóa món ăn <span id="TenMon" class="fw-bold"></span>?
+                </div>
+                <div class="modal-footer">
+                    <form id="delete-form" asp-action="Delete" class="row w-100 justify-content-center">
+                    <input name="MonId" id="MonId" type="hidden" />
+                        <button type="button" class="col-3 mx-1 btn btn-outline-secondary" data-bs-dismiss="modal">Trở lại</button>
+                        <input type="submit" value="Xóa" class="col-3 mx-1 btn btn-outline-danger" />
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script>
+        $(document).ready(function () {
+            $("#SyncData").click(() => {
+                $("#blockUI").show();
+            });
+            $('.btnDelete').click((event) => {
+                event.preventDefault();
+                const value = parseInt(event.currentTarget.id);
+                const text = event.currentTarget.dataset.product;
+                $('#MonId').val(value);
+                $('#TenMon').html(text);
+                $('#confirmModal').modal('show');
+            });
+        });
+    </script>
+    }
+

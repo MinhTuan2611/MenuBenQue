@@ -4,60 +4,102 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
-
-<h4>MonAn</h4>
+<div class="banner">
+    <div class="banner-text">
+        <h1>Cập nhật món ăn</h1>
+    </div>
+</div>
 <hr />
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-12 col-md-6">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="MonId" />
-            <div class="form-group">
-                <label asp-for="TenMon" class="control-label"></label>
-                <input asp-for="TenMon" class="form-control" />
-                <span asp-validation-for="TenMon" class="text-danger"></span>
+            <div class="form-group row mb-3 mb-md-2">
+                <div class="col-12 col-md-2">
+                    <label asp-for="TenMon" class="control-label"></label>
+                </div>
+                <div class="col-12 col-md-10">
+                    <input asp-for="TenMon" class="form-control" />
+                    <span asp-validation-for="TenMon" class="text-danger"></span>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="GiaMon" class="control-label"></label>
-                <input asp-for="GiaMon" class="form-control" />
-                <span asp-validation-for="GiaMon" class="text-danger"></span>
+
+            <div class="form-group row mb-3 mb-md-2">
+                <div class="col-12 col-md-2">
+                    <label asp-for="NhomMonAn" class="control-label"></label>
+                </div>
+                <div class="col-12 col-md-10">
+                    <select asp-for="NhomMonAn" class="form-select " id="inputGroupSelect01">
+                        <option selected>Chọn...</option>
+                        @foreach (NhomMonAn item in ViewBag.NhomMonAn)
+                        {
+                            if (@item.NhomId == Model.NhomMonAn.NhomId)
+                            {
+                                <option value="@item.NhomId" selected>@item.TenNhom</option>
+                            }
+                             else {
+                                 <option value="@item.NhomId">@item.TenNhom</option>
+                             }
+                        }
+                    </select>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="DonVi" class="control-label"></label>
-                <input asp-for="DonVi" class="form-control" />
-                <span asp-validation-for="DonVi" class="text-danger"></span>
+
+            <div class="form-group row mb-3 mb-md-2">
+                <div class="col-12 col-md-2">
+                    <label asp-for="GiaMon" class="control-label"></label>
+                </div>
+                <div class="col-12 col-md-10">
+                    <input asp-for="GiaMon" class="form-control" />
+                    <span asp-validation-for="GiaMon" class="text-danger"></span>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="GiaMonKhuyenMai" class="control-label"></label>
-                <input asp-for="GiaMonKhuyenMai" class="form-control" />
-                <span asp-validation-for="GiaMonKhuyenMai" class="text-danger"></span>
+
+            <div class="form-group row mb-3 mb-md-2">
+                <div class="col-12 col-md-2">
+                    <label asp-for="DonVi" class="control-label"></label>
+                </div>
+                <div class="col-12 col-md-10">
+                    <input asp-for="DonVi" class="form-control" />
+                    <span asp-validation-for="DonVi" class="text-danger"></span>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="Active" class="control-label"></label>
-                <input asp-for="Active" class="form-control" />
+
+            <div class="form-group row mb-3 mb-md-2">
+                <div class="col-12 col-md-2">
+                    <label asp-for="GiaMonKhuyenMai" class="control-label"></label>
+                </div>
+                <div class="col-12 col-md-10">
+                    <input asp-for="GiaMonKhuyenMai" class="form-control" />
+                    <span asp-validation-for="GiaMonKhuyenMai" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group row mb-3 mb-md-2">
+                <label asp-for="Active" class="col-12 col-md-2 control-label"></label>
+                <div class="col-12 col-md-10">
+                    @* <div class="col-6"><input type="radio" id="Active" asp-for="Active" value="True" checked /> <label for="Active">Đang bán</label> </div>
+                    <div class="col-6"><input type="radio" id="Active" asp-for="Active" value="False" /> <label for="Active">Ngưng bán</label> </div>*@
+                    <div class="col-6">@Html.RadioButtonFor(model => model.Active, "True") Đang bán </div>
+                    <div class="col-6">@Html.RadioButtonFor(model => model.Active, "False") Ngưng bán </div>
+                </div>
                 <span asp-validation-for="Active" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="CreateDate" class="control-label"></label>
-                <input asp-for="CreateDate" class="form-control" />
-                <span asp-validation-for="CreateDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="UpdateDate" class="control-label"></label>
-                <input asp-for="UpdateDate" class="form-control" />
-                <span asp-validation-for="UpdateDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-6">
+                    <div class="row ps-3">
+                        <a asp-action="Index" class="col-6 btn btn-outline-secondary">Trở lại</a>
+                        <div class="col-6 form-group">
+                            <input type="submit" value="Lưu" class="btn btn-outline-primary w-100" />
+                        </div>
+                    </div>
+                </div>
             </div>
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

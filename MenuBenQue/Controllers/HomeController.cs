@@ -1,23 +1,28 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
+using ThuMuaHangWeb.Data;
 using ThuMuaHangWeb.Models;
 
 namespace ThuMuaHangWeb.Controllers
 {
-    [Authorize]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly ApplicationDbContext _context;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, ApplicationDbContext context)
         {
             _logger = logger;
+            _context = context;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            return _context.MonAns != null ?
+            View(await _context.MonAns.Include(m => m.NhomMonAn).Where(m => m.Active == true).ToListAsync()) :
+            Problem("Entity set 'ApplicationDbContext.MonAns'  is null.");
         }
 
         public IActionResult Privacy()
