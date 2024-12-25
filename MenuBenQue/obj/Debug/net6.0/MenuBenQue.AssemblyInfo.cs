@@ -16,7 +16,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MenuBenQue")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+93e1bc3a736048c584695b3d663dde2179d6c6eb")]
 [assembly: System.Reflection.AssemblyProductAttribute("MenuBenQue")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MenuBenQue")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

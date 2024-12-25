@@ -3,11 +3,14 @@
 
 *.vsidx
 
-MenuBenQue/bin//bin/
+MenuBenQue/bin/
 
-MenuBenQue/bin//obj/
+MenuBenQue/obj/
+
+MenuBenQue/Properties/
+
 *.cache
 
 *.user
 
-MenuBenQue/bin//.config/dotnet-tools.json
+

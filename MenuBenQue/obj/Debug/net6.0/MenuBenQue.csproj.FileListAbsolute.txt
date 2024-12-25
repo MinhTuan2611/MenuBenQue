@@ -548,7 +548,6 @@ D:\SourceCode\MenuBenQue\MenuBenQue\obj\Debug\net6.0\staticwebassets.development
 D:\SourceCode\MenuBenQue\MenuBenQue\obj\Debug\net6.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
 D:\SourceCode\MenuBenQue\MenuBenQue\obj\Debug\net6.0\scopedcss\bundle\MenuBenQue.styles.css
 D:\SourceCode\MenuBenQue\MenuBenQue\obj\Debug\net6.0\scopedcss\projectbundle\MenuBenQue.bundle.scp.css
-D:\SourceCode\MenuBenQue\MenuBenQue\obj\Debug\net6.0\MenuBenQue.csproj.CopyComplete
 D:\SourceCode\MenuBenQue\MenuBenQue\obj\Debug\net6.0\MenuBenQue.dll
 D:\SourceCode\MenuBenQue\MenuBenQue\obj\Debug\net6.0\refint\MenuBenQue.dll
 D:\SourceCode\MenuBenQue\MenuBenQue\obj\Debug\net6.0\MenuBenQue.pdb
@@ -556,3 +555,5 @@ D:\SourceCode\MenuBenQue\MenuBenQue\obj\Debug\net6.0\MenuBenQue.genruntimeconfig
 D:\SourceCode\MenuBenQue\MenuBenQue\obj\Debug\net6.0\ref\MenuBenQue.dll
 D:\SourceCode\MenuBenQue\MenuBenQue\bin\Debug\net6.0\Microsoft.Extensions.Logging.Abstractions.dll
 D:\SourceCode\MenuBenQue\MenuBenQue\bin\Debug\net6.0\System.Formats.Asn1.dll
+D:\SourceCode\MenuBenQue\MenuBenQue\obj\Debug\net6.0\MenuBenQue.sourcelink.json
+D:\SourceCode\MenuBenQue\MenuBenQue\obj\Debug\net6.0\MenuBenQue.csproj.Up2Date

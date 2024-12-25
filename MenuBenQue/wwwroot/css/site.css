@@ -242,23 +242,25 @@ table > tbody > tr:nth-child(even) > td {
 .favorite-dishes {
     font-family: "Arial", sans-serif;
     color: #38624c;
-    text-align: center;
+    
     padding: 20px;
     background-color: #f3f3eb;
 }
 
-.favorite-dishes h1 {
-    font-size: 5vw;
-    /*text-transform: uppercase;
+    .favorite-dishes h1 {
+        font-size: 5vw;
+        text-align: center;
+        width:100%;
+        /*text-transform: uppercase;
     /*margin-bottom: 20px;
     color: #4c6c52;*/
 
-    color: #356E3A; /* Màu xanh đậm (tông chữ chính) */
-    font-weight: bold; /* Chữ in đậm */
-    text-shadow: 1px 1px 0px #F4D26E; /* Tạo hiệu ứng bóng chữ vàng nhạt */
-    padding: 10px 20px; /* Khoảng cách padding xung quanh chữ */
-    display: inline-block; /* Để căn giữa chính xác và tạo khối xung quanh */
-}
+        color: #356E3A; /* Màu xanh đậm (tông chữ chính) */
+        font-weight: bold; /* Chữ in đậm */
+        text-shadow: 1px 1px 0px #F4D26E; /* Tạo hiệu ứng bóng chữ vàng nhạt */
+        padding: 10px 20px; /* Khoảng cách padding xung quanh chữ */
+        display: inline-block; /* Để căn giữa chính xác và tạo khối xung quanh */
+    }
 
 
 
@@ -315,4 +317,24 @@ table > tbody > tr:nth-child(even) > td {
     .edit-icon:hover {
         background-color: #F4D26E; /* Đổi màu khi hover */
         color: #356E3A; /* Đổi màu icon khi hover */
+    }
+
+
+.button {
+    display: inline-flex;
+    align-items: center;
+    background-color: #346b3c; /* Màu xanh của nút */
+    color: #fff; /* Màu chữ */
+    font-size: 16px; /* Kích thước chữ */
+    font-weight: bold;
+    padding: 10px 20px; /* Khoảng cách bên trong nút */
+    border: none;
+    border-radius: 20px; /* Góc bo tròn */
+    cursor: pointer;
+    text-transform: uppercase; /* Chữ in hoa */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+    .button:hover {
+        background-color: #295e33; /* Hiệu ứng hover */
     }

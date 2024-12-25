@@ -253,6 +253,9 @@ namespace MenuBenQue.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("GhiChu")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<decimal>("GiaMon")
                         .HasPrecision(18, 3)
                         .HasColumnType("decimal(18,3)");
@@ -261,7 +264,19 @@ namespace MenuBenQue.Migrations
                         .HasPrecision(18, 3)
                         .HasColumnType("decimal(18,3)");
 
+                    b.Property<bool>("IsCombo")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("MatMa")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("MonAnMonId")
+                        .HasColumnType("int");
+
                     b.Property<int>("NhomMonAnNhomId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("Order")
                         .HasColumnType("int");
 
                     b.Property<string>("TenMon")
@@ -272,6 +287,8 @@ namespace MenuBenQue.Migrations
                         .HasColumnType("datetime2");
 
                     b.HasKey("MonId");
+
+                    b.HasIndex("MonAnMonId");
 
                     b.HasIndex("NhomMonAnNhomId");
 
@@ -292,6 +309,12 @@ namespace MenuBenQue.Migrations
                     b.Property<DateTime>("CreateDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("GhiChu")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("NhomChaId")
+                        .HasColumnType("int");
+
                     b.Property<int?>("Order")
                         .HasColumnType("int");
 
@@ -299,10 +322,15 @@ namespace MenuBenQue.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("TenNhomMatMa")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("UpdateDate")
                         .HasColumnType("datetime2");
 
                     b.HasKey("NhomId");
+
+                    b.HasIndex("NhomChaId");
 
                     b.ToTable("NhomMonAn");
                 });
@@ -360,6 +388,10 @@ namespace MenuBenQue.Migrations
 
             modelBuilder.Entity("ThuMuaHangWeb.Models.MonAn", b =>
                 {
+                    b.HasOne("ThuMuaHangWeb.Models.MonAn", null)
+                        .WithMany("MonCombo")
+                        .HasForeignKey("MonAnMonId");
+
                     b.HasOne("ThuMuaHangWeb.Models.NhomMonAn", "NhomMonAn")
                         .WithMany()
                         .HasForeignKey("NhomMonAnNhomId")
@@ -367,6 +399,20 @@ namespace MenuBenQue.Migrations
                         .IsRequired();
 
                     b.Navigation("NhomMonAn");
+                });
+
+            modelBuilder.Entity("ThuMuaHangWeb.Models.NhomMonAn", b =>
+                {
+                    b.HasOne("ThuMuaHangWeb.Models.NhomMonAn", "NhomCha")
+                        .WithMany()
+                        .HasForeignKey("NhomChaId");
+
+                    b.Navigation("NhomCha");
+                });
+
+            modelBuilder.Entity("ThuMuaHangWeb.Models.MonAn", b =>
+                {
+                    b.Navigation("MonCombo");
                 });
 #pragma warning restore 612, 618
         }

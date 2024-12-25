@@ -32,7 +32,10 @@ namespace MenuBenQue.Controllers
         public async Task<IActionResult> Index()
         {
               return _context.MonAns != null ? 
-                          View(await _context.MonAns.Include(m => m.NhomMonAn).OrderBy(m =>m.NhomMonAn.Order).ToListAsync()) :
+                          View(await _context.MonAns.Include(m => m.NhomMonAn)
+                          .OrderBy(m =>m.NhomMonAn.Order)
+                          .ThenBy(m =>m.Order)
+                          .ToListAsync()) :
                           Problem("Entity set 'ApplicationDbContext.MonAns'  is null.");
         }
 
@@ -72,10 +75,13 @@ namespace MenuBenQue.Controllers
             MonAn monAn = new MonAn
             {
                 TenMon = IMonAn.TenMon,
-                GiaMon = IMonAn.GiaMon,
+                GiaMon = (decimal)IMonAn.GiaMon,
                 DonVi = IMonAn.DonVi,
                 NhomMonAn = _context.NhomMonAn.FirstOrDefault(n => n.NhomId == IMonAn.NhomMonAn),
                 GiaMonKhuyenMai = IMonAn.GiaMonKhuyenMai,
+                MatMa = IMonAn.MatMa,
+                Order = IMonAn.Order,
+                GhiChu = IMonAn.GhiChu,
                 Active = IMonAn.Active
             };
 
@@ -117,7 +123,10 @@ namespace MenuBenQue.Controllers
             {
                 MonId = (int)IMonAn.MonId,
                 TenMon = IMonAn.TenMon,
-                GiaMon = IMonAn.GiaMon,
+                MatMa = IMonAn.MatMa,
+                Order = IMonAn.Order,
+                GhiChu = IMonAn.GhiChu,
+                GiaMon = (decimal)IMonAn.GiaMon,
                 DonVi = IMonAn.DonVi,
                 NhomMonAn = _context.NhomMonAn.FirstOrDefault(n => n.NhomId == IMonAn.NhomMonAn),
                 GiaMonKhuyenMai = IMonAn.GiaMonKhuyenMai,
