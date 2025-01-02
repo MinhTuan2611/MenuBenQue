@@ -2,7 +2,9 @@
 
 @{
     ViewData["Title"] = "Index";
-    var groupedData = Model.GroupBy(monAn => monAn.NhomMonAn).OrderBy(g => g.Key.Order);
+    var groupedData = Model
+    .GroupBy(monAn => monAn.NhomMonAn)
+    .OrderBy(gc => gc.Key.Order);
 
     string ConvertGia(decimal gia)
     {
@@ -16,29 +18,106 @@
 
 
 <div class="favorite-dishes">
-    <button class="button">
-        MẬT MÃ
-    </button>
-    @foreach (var group in groupedData)
-    {
-        <div class="group">
-            <h1>@group.Key.TenNhom</h1>
-            <div class="menu">
-                <ul>
-                    @foreach (var mon in group)
+    <div id="giaiMa" class="giai-ma">
+        <button id="btnGiaiMa" class="button btn-matma">
+            MẬT MÃ
+        </button>
+        @foreach (var group in groupedData)
+        {
+            <div class="group">
+                <div class="title-container">
+                    <div class="vertical-line"></div>
+                    @if (group.Key.NhomCha != null)
                     {
-                        <li class="align-items-center">
-                            <span class="dish-name">@mon.TenMon</span>
-                            <span class="dish-price"> <span class="dish-price-detail">@ConvertGia(@mon.GiaMon)</span>k/@mon.DonVi</span>
-                        </li>
+                        <div class="title">@group.Key.NhomCha?.TenNhom</div>
+                        <div class="subtitle">@group.Key.TenNhom</div>
                     }
-                </ul>
+                    else
+                    {
+                        <div class="title">@group.Key.TenNhom</div>
+                    }
+                </div>
+                
+                
+                <div class="menu">
+                    <ul>
+                        @foreach (var mon in group)
+                        {
+                            <li class="align-items-center">
+                                <span class="dish-name">
+                                    @mon.TenMon&nbsp;
+                                    @if (@mon.GhiChu != null)
+                                    {
+                                        <span class="dish-note">(@mon.GhiChu)</span>
+                                    }
+                                </span>
+                                <span class="dish-price"> <span class="dish-price-detail">@ConvertGia(@mon.GiaMon)</span>k/@mon.DonVi</span>
+                            </li>
+                        }
+                    </ul>
+                </div>
             </div>
-        </div>
 
-    }
+        }
+    </div>
+    
+    <div id="matMa" class="d-none"> 
+        <button id="btnMatMa" class="button btn-matma">
+            GIẢI MÃ
+        </button>
+        @foreach (var group in groupedData)
+        {
+            <div class="group">
+                <div class="title-container">
+                    <div class="vertical-line"></div>
+                    @if (group.Key.NhomCha != null)
+                    {
+                        <div class="title">@group.Key.NhomCha?.TenNhomMatMa</div>
+                        <div class="subtitle">@group.Key.TenNhomMatMa</div>
+                    }
+                    else
+                    {
+                        <div class="title">@group.Key.TenNhomMatMa</div>
+                    }
+                </div>
+                <div class="menu">
+                    <ul>
+                        @foreach (var mon in group)
+                        {
+                            <li class="align-items-center">
+                                <span class="dish-name">@mon.MatMa</span>
+                                <span class="dish-price"> <span class="dish-price-detail">@ConvertGia(@mon.GiaMon)</span>k/@mon.DonVi</span>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+
+        }
+    </div>
 </div>
 
 <div class="edit-icon">
     <a class="nav-link text-dark" asp-area="" asp-controller="MonAns" asp-action=""><i class="fa fa-pencil"></i></a>
 </div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script>
+        $(document).ready(function () {
+            $('#btnGiaiMa').click((event) => {
+                event.preventDefault();
+                $('#matMa').removeClass('d-none');
+                $('#giaiMa').addClass('d-none');
+            });
+
+            $('#btnMatMa').click((event) => {
+                event.preventDefault();
+                $('#giaiMa').removeClass('d-none');
+                $('#matMa').addClass('d-none');
+            });
+        });
+    </script>
+}

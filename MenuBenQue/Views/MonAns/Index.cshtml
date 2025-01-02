@@ -28,6 +28,9 @@
                 @Html.DisplayNameFor(model => model.NhomMonAn)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.Order)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.GiaMonKhuyenMai)
             </th>
             <th>
@@ -52,7 +55,10 @@
             <td>
                 @Html.DisplayFor(modelItem => item.NhomMonAn.TenNhom)
             </td>
-                <td class="text-end">
+            <td>
+                @Html.DisplayFor(modelItem => item.Order)
+            </td>
+            <td class="text-end">
                  @item.GiaMonKhuyenMai?.ToString("#,##0")
             </td>
             
@@ -119,5 +125,5 @@
             });
         });
     </script>
-    }
+}
 

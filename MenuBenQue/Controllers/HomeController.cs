@@ -21,7 +21,7 @@ namespace ThuMuaHangWeb.Controllers
         public async Task<IActionResult> Index()
         {
             return _context.MonAns != null ?
-            View(await _context.MonAns.Include(m => m.NhomMonAn).Where(m => m.Active == true).ToListAsync()) :
+            View(await _context.MonAns.Include(m => m.NhomMonAn).Include(m => m.NhomMonAn.NhomCha).Where(m => m.Active == true).OrderBy(m => m.Order).ToListAsync()) :
             Problem("Entity set 'ApplicationDbContext.MonAns'  is null.");
         }
 
