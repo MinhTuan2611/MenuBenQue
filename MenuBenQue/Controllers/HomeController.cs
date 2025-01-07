@@ -20,9 +20,20 @@ namespace ThuMuaHangWeb.Controllers
 
         public async Task<IActionResult> Index()
         {
-            return _context.MonAns != null ?
-            View(await _context.MonAns.Include(m => m.NhomMonAn).Include(m => m.NhomMonAn.NhomCha).Where(m => m.Active == true).OrderBy(m => m.Order).ToListAsync()) :
-            Problem("Entity set 'ApplicationDbContext.MonAns'  is null.");
+            IIndex result = new IIndex()
+            {
+                MonAns = await _context.MonAns.Include(m => m.NhomMonAn).Include(m => m.NhomMonAn.NhomCha).Where(m => m.Active == true).OrderBy(m => m.Order).ToListAsync(),
+                Comboes = await _context.Combos
+                .Include(m => m.NhomMon)
+                .Include(m => m.NhomMon.NhomCha)
+                .ToListAsync()
+            };
+
+            ViewBag.Comboes = _context.Combos
+                .Include(m => m.NhomMon)
+                .Include(m => m.NhomMon.NhomCha)
+                .ToList();
+            return result.MonAns != null ? View(result) : Problem("Entity set 'ApplicationDbContext.MonAns'  is null.");
         }
 
         public IActionResult Privacy()

@@ -1,10 +1,6 @@
-using DocumentFormat.OpenXml.Wordprocessing;
-using Microsoft.AspNetCore.Identity;
+using MenuBenQue.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Microsoft.CodeAnalysis.Operations;
 using Microsoft.EntityFrameworkCore;
-using Newtonsoft.Json;
-using ThuMuaHangWeb.Data.Enum;
 using ThuMuaHangWeb.Models;
 
 namespace ThuMuaHangWeb.Data
@@ -19,6 +15,7 @@ namespace ThuMuaHangWeb.Data
 
         public DbSet<MonAn> MonAns { get; set; }
         public DbSet<NhomMonAn> NhomMonAn { get; set; }
+        public DbSet<Combo> Combos { get; set; }
 
     }
 }

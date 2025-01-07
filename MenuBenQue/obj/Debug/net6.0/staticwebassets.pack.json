@@ -17,6 +17,18 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "D:\\SourceCode\\MenuBenQue\\MenuBenQue\\wwwroot\\images\\menu-01-1.jpg",
+      "PackagePath": "staticwebassets\\images\\menu-01-1.jpg"
+    },
+    {
+      "Id": "D:\\SourceCode\\MenuBenQue\\MenuBenQue\\wwwroot\\images\\menu-01-2.jpg",
+      "PackagePath": "staticwebassets\\images\\menu-01-2.jpg"
+    },
+    {
+      "Id": "D:\\SourceCode\\MenuBenQue\\MenuBenQue\\wwwroot\\images\\menu-01.jpg",
+      "PackagePath": "staticwebassets\\images\\menu-01.jpg"
+    },
+    {
       "Id": "D:\\SourceCode\\MenuBenQue\\MenuBenQue\\wwwroot\\js\\requests.js",
       "PackagePath": "staticwebassets\\js\\requests.js"
     },

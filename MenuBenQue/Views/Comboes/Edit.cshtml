@@ -1,0 +1,85 @@
+﻿@model MenuBenQue.Models.Combo
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="banner">
+    <div class="banner-text">
+        <h1>Cập nhật combo</h1>
+    </div>
+</div>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ComboId" />
+            <div class="form-group row mb-3 mb-md-2">
+                <div class="col-12 col-md-2">
+                    <label asp-for="TenCombo" class="control-label"></label>
+                </div>
+                <div class="col-12 col-md-10">
+                    <input asp-for="TenCombo" class="form-control" />
+                    <span asp-validation-for="TenCombo" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group row mb-3 mb-md-2">
+                <div class="col-12 col-md-2">
+                    <label asp-for="GhiChu" class="control-label"></label>
+                </div>
+                <div class="col-12 col-md-10">
+                    <input asp-for="GhiChu" class="form-control" />
+                    <span asp-validation-for="GhiChu" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group row mb-3 mb-md-2">
+                <div class="col-12 col-md-2">
+                    <label asp-for="DanhSachMon" class="control-label"></label>
+                </div>
+                <div class="col-12 col-md-10">
+                    <textarea asp-for="DanhSachMon" class="form-control"></textarea>
+                    <span asp-validation-for="DanhSachMon" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group row mb-3 mb-md-2">
+                <div class="col-12 col-md-2">
+                    <label asp-for="Tang" class="control-label"></label>
+                </div>
+                <div class="col-12 col-md-10">
+                    <input asp-for="Tang" class="form-control" />
+                    <span asp-validation-for="Tang" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group row mb-3 mb-md-2">
+                <div class="col-12 col-md-2">
+                    <label asp-for="NhomId" class="control-label"></label>
+                </div>
+                <div class="col-12 col-md-10">
+                    <select asp-for="NhomId" class="form-select " id="inputGroupSelect01">
+                        <option selected>Chọn...</option>
+                        @foreach (NhomMonAn item in ViewBag.NhomMonAn)
+                        {
+                            <option value="@item.NhomId">@item.TenNhom</option>
+                        }
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,8 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
-using ThuMuaHangWeb.Data.Enum;
 
 namespace ThuMuaHangWeb.Models
 {
@@ -55,7 +52,6 @@ namespace ThuMuaHangWeb.Models
         public decimal? GiaMonKhuyenMai { get; set; }
         
         public int NhomMonAn { get; set; }
-        public bool IsCombo { get; set; } = false;
         public int? Order { get; set; }
         public List<MonAn>? MonCombo { get; set; }
         public bool? Active { get; set; } = true;

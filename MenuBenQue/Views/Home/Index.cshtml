@@ -1,11 +1,12 @@
-﻿@model IEnumerable<ThuMuaHangWeb.Models.MonAn>
+﻿@model ThuMuaHangWeb.Models.IIndex
 
 @{
     ViewData["Title"] = "Index";
-    var groupedData = Model
+    var groupedData = Model.MonAns
     .GroupBy(monAn => monAn.NhomMonAn)
     .OrderBy(gc => gc.Key.Order);
 
+    var groupComboes = Model.Comboes.GroupBy(combo => combo.NhomMon);
     string ConvertGia(decimal gia)
     {
         if (gia >= 1000)
@@ -18,10 +19,49 @@
 
 
 <div class="favorite-dishes">
+    <div class="image text-center">
+        <img src="./images/menu-01-1.jpg" class="image-item" />
+        <img src="./images/menu-01-2.jpg" class="image-item" />
+    </div>
     <div id="giaiMa" class="giai-ma">
         <button id="btnGiaiMa" class="button btn-matma">
             MẬT MÃ
         </button>
+        @foreach (var groupCombo in groupComboes)
+        {
+        <div class="group">
+            <div class="title-container">
+                <div class="vertical-line"></div>
+                @if (groupCombo.Key.NhomCha != null)
+                {
+                    <div class="title">@groupCombo.Key.NhomCha?.TenNhom</div>
+                    <div class="subtitle">@groupCombo.Key.TenNhom</div>
+                }
+                else
+                {
+                    <div class="title">@groupCombo.Key.TenNhom</div>
+                }
+            </div>
+                
+                
+            <div class="menu">
+                <ul>
+                @foreach (var combo in groupCombo)
+                {
+                        <li class="align-items-center">
+                            <span class="dish-name">
+                                @combo.TenCombo&nbsp;
+                                @if (@combo.GhiChu != null)
+                                {
+                                    <span class="dish-note">(@combo.GhiChu)</span>
+                                }
+                            </span>
+                                @Html.Raw(combo.DanhSachMon.Replace("\n", "<br>").Replace("\r\n", "<br>"))
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>                }
         @foreach (var group in groupedData)
         {
             <div class="group">

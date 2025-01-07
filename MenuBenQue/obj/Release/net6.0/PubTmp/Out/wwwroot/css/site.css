@@ -242,23 +242,27 @@ table > tbody > tr:nth-child(even) > td {
 .favorite-dishes {
     font-family: "Arial", sans-serif;
     color: #38624c;
-    text-align: center;
-    padding: 20px;
     background-color: #f3f3eb;
+    /* padding: 20px;
+    background-color: #f3f3eb;*/
 }
 
-.favorite-dishes h1 {
-    font-size: 5vw;
-    /*text-transform: uppercase;
-    /*margin-bottom: 20px;
-    color: #4c6c52;*/
+    .favorite-dishes h1 {
+        font-size: 5vw;
+        text-align: center;
+        width: 100%;
+        /*text-transform: uppercase;
+/*margin-bottom: 20px;
+color: #4c6c52;*/
+       
+        color: #356E3A; /* Màu xanh đậm (tông chữ chính) */
+        font-weight: bold; /* Chữ in đậm */
+        text-shadow: 1px 1px 0px #F4D26E; /* Tạo hiệu ứng bóng chữ vàng nhạt */
+        padding: 10px 20px; /* Khoảng cách padding xung quanh chữ */
+        display: inline-block; /* Để căn giữa chính xác và tạo khối xung quanh */
+    }
 
-    color: #356E3A; /* Màu xanh đậm (tông chữ chính) */
-    font-weight: bold; /* Chữ in đậm */
-    text-shadow: 1px 1px 0px #F4D26E; /* Tạo hiệu ứng bóng chữ vàng nhạt */
-    padding: 10px 20px; /* Khoảng cách padding xung quanh chữ */
-    display: inline-block; /* Để căn giữa chính xác và tạo khối xung quanh */
-}
+
 
 
 
@@ -279,6 +283,14 @@ table > tbody > tr:nth-child(even) > td {
 .menu .dish-name {
     font-size: 20px;
     font-weight: bold;
+    text-align: left;
+    padding-right: 10px;
+}
+
+.menu .dish-note {
+    font-size: 18px;
+    color: #b22222;
+    font-weight:normal;
     text-align: left;
 }
 
@@ -316,3 +328,119 @@ table > tbody > tr:nth-child(even) > td {
         background-color: #F4D26E; /* Đổi màu khi hover */
         color: #356E3A; /* Đổi màu icon khi hover */
     }
+
+
+.button {
+    display: inline-flex;
+    align-items: center;
+    background-color: #346b3c; /* Màu xanh của nút */
+    color: #fff; /* Màu chữ */
+    font-size: 16px; /* Kích thước chữ */
+    font-weight: bold;
+    padding: 10px 20px; /* Khoảng cách bên trong nút */
+    border: none;
+    border-radius: 20px; /* Góc bo tròn */
+    cursor: pointer;
+    text-transform: uppercase; /* Chữ in hoa */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+    .button:hover {
+        background-color: #295e33; /* Hiệu ứng hover */
+    }
+
+.title-container {
+    /*background-color: #f5e9c3;*/ /* Màu nền vàng nhạt */
+    /*padding: 20px;*/ /* Khoảng cách xung quanh */
+    border-radius: 5px; /* Bo góc */
+    display: inline-block;
+    position: relative;
+}
+
+.group {
+    padding: 20px;
+    padding-top: 50px;
+}
+
+    .group:nth-child(even) {
+        background-color: #f3f3eb;
+    }
+
+    .group:nth-child(odd) {
+        background-color: #2b5429;
+    }
+
+.vertical-line {
+    position: absolute;
+    left: 0;
+    top: 10px;
+    bottom: 10px;
+    width: 5px;
+    background-color: #2f4f2f; /* Màu xanh lá đậm */
+    border-radius: 2px;
+}
+
+
+
+.title {
+    font-family: 'Arial', sans-serif; /* Font không chân cho chữ in hoa */
+    font-size: 5vw; /* Kích thước lớn cho tiêu đề */
+    font-weight: bold; /* Chữ đậm */
+    color: #b22222; /* Màu đỏ đậm */
+    margin: 0 0 0px 20px; /* Khoảng cách với cạnh và chữ xanh */
+}
+.subtitle {
+    font-family: 'Dancing Script', cursive; /* Font viết tay */
+    font-size: 6vw; /* Kích thước nhỏ hơn */
+    font-weight: 600; /* Độ dày vừa */
+    color: #2f4f2f; /* Màu xanh lá */
+    margin-left: 20px; /* Khoảng cách với vạch dọc */
+}
+
+
+.group:nth-child(odd) .title {
+    text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff;
+}
+
+.group:nth-child(odd) .vertical-line {
+    background-color: #e5db9a;
+}
+
+.group:nth-child(odd) .subtitle {
+    color: #e5db9a; /* Màu xanh lá */
+}
+
+.group:nth-child(odd) .menu .dish-name {
+    color: #f8fcfe;
+}
+
+.group:nth-child(odd) .menu .dish-note {
+    color: #e5db9a;
+}
+
+.group:nth-child(odd) .menu .dish-price {
+    color: #f8fcfe;
+}
+
+.btn-matma {
+    position: fixed;
+    top: 10px;
+    left: 20px;
+    z-index: 10;
+}
+
+
+@media (orientation: portrait) {
+    .image-item {
+        width: 95vw;
+        height: auto;
+    }
+}
+
+/* Nếu chiều rộng lớn hơn chiều cao */
+@media (orientation: landscape) {
+    .image-item {
+        height: 100vh;
+        max-width: 48vw; /* Để chiều rộng tự động điều chỉnh theo nội dung */
+    }
+}

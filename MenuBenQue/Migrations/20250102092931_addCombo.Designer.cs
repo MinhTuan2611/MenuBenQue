@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ThuMuaHangWeb.Data;
 
@@ -11,9 +12,10 @@ using ThuMuaHangWeb.Data;
 namespace MenuBenQue.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250102092931_addCombo")]
+    partial class addCombo
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,42 +23,6 @@ namespace MenuBenQue.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
-
-            modelBuilder.Entity("MenuBenQue.Models.Combo", b =>
-                {
-                    b.Property<int>("ComboId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ComboId"), 1L, 1);
-
-                    b.Property<string>("DanhSachMon")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("GhiChu")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("NhomId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("NhomMonNhomId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Tang")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("TenCombo")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("ComboId");
-
-                    b.HasIndex("NhomMonNhomId");
-
-                    b.ToTable("Combos");
-                });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
@@ -369,17 +335,6 @@ namespace MenuBenQue.Migrations
                     b.HasIndex("NhomChaId");
 
                     b.ToTable("NhomMonAn");
-                });
-
-            modelBuilder.Entity("MenuBenQue.Models.Combo", b =>
-                {
-                    b.HasOne("ThuMuaHangWeb.Models.NhomMonAn", "NhomMon")
-                        .WithMany()
-                        .HasForeignKey("NhomMonNhomId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("NhomMon");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

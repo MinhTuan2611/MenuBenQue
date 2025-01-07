@@ -1,4 +1,6 @@
-﻿namespace ThuMuaHangWeb.Models
+﻿using MenuBenQue.Models;
+
+namespace ThuMuaHangWeb.Models
 {
     public class PagingModel
     {
@@ -20,5 +22,9 @@
         public string error_code { get; set; }
         public string message { get; set; }
         public string data { get; set; }
+    }
+    public class IIndex {
+        public List<MonAn> MonAns { get; set; } = null;
+        public List<Combo> Comboes { get; set; } = null;
     }
 }

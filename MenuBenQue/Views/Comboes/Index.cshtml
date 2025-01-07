@@ -1,0 +1,103 @@
+﻿@model IEnumerable<MenuBenQue.Models.Combo>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<div class="banner">
+    <div class="banner-text">
+        <h1>Danh Sách Combo</h1>
+    </div>
+</div>
+<hr />
+
+<a type="button" class="btn btn-outline-primary mt-5 mb-2" asp-action="Create">Thêm combo</a>
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TenCombo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DanhSachMon)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tang)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NhomId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GhiChu)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenCombo)
+            </td>
+            <td>
+                @Html.Raw(item.DanhSachMon.Replace("\n", "<br>").Replace("\r\n", "<br>"))
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tang)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NhomMon.TenNhom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GhiChu)
+            </td>
+            <td>
+                    <a asp-action="Edit" asp-route-id="@item.ComboId"><i class="fa fa-pencil-square-o pe-2"></i></a>
+                    <a href="#" id="@item.ComboId" data-product="@item.ComboId" class="btnDelete text-danger"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+<!-- Modal -->
+<div class="modal fade" id="confirmModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header d-flex justify-content-center">
+                <h1 class="modal-title fs-5" id="confirmModalLabel">Xác nhận</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Bạn chắc chắn muốn xóa combo <span id="TenCombo" class="fw-bold"></span>?
+            </div>
+            <div class="modal-footer">
+                <form id="delete-form" asp-action="Delete" class="row w-100 justify-content-center">
+                    <input name="ComboId" id="ComboId" type="hidden" />
+                    <button type="button" class="col-3 mx-1 btn btn-outline-secondary" data-bs-dismiss="modal">Trở lại</button>
+                    <input type="submit" value="Xóa" class="col-3 mx-1 btn btn-outline-danger" />
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script>
+        $(document).ready(function () {
+            $("#SyncData").click(() => {
+                $("#blockUI").show();
+            });
+            $('.btnDelete').click((event) => {
+                event.preventDefault();
+                const value = parseInt(event.currentTarget.id);
+                const text = event.currentTarget.dataset.product;
+                $('#ComboId').val(value);
+                $('#TenCombo').html(text);
+                $('#confirmModal').modal('show');
+            });
+        });
+    </script>
+}
