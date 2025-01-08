@@ -29,12 +29,12 @@
         </button>
         @foreach (var groupCombo in groupComboes)
         {
-        <div class="group">
+        <div class="group-combo py-5 px-4">
             <div class="title-container">
                 <div class="vertical-line"></div>
                 @if (groupCombo.Key.NhomCha != null)
                 {
-                    <div class="title">@groupCombo.Key.NhomCha?.TenNhom</div>
+                        <div class="title px-4">@groupCombo.Key.NhomCha?.TenNhom</div>
                     <div class="subtitle">@groupCombo.Key.TenNhom</div>
                 }
                 else
@@ -48,16 +48,13 @@
                 <ul>
                 @foreach (var combo in groupCombo)
                 {
-                        <li class="align-items-center">
-                            <span class="dish-name">
-                                @combo.TenCombo&nbsp;
-                                @if (@combo.GhiChu != null)
-                                {
-                                    <span class="dish-note">(@combo.GhiChu)</span>
-                                }
-                            </span>
-                                @Html.Raw(combo.DanhSachMon.Replace("\n", "<br>").Replace("\r\n", "<br>"))
-                        </li>
+                    <div class="col mt-4">
+                        <div class="dish-name"><i class="fa fa-solid fa-star"></i> @combo.TenCombo</div>
+                        <div class="dish-note">(@combo.GhiChu)</div>
+                    </div>
+                    <div class="combo-des pt-3">
+                        @Html.Raw(combo.DanhSachMon.Replace("\n", "<br>").Replace("\r\n", "<br>"))
+                    </div>
                     }
                 </ul>
             </div>

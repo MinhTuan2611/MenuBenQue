@@ -240,7 +240,7 @@ table > tbody > tr:nth-child(even) > td {
 }
 
 .favorite-dishes {
-    font-family: "Arial", sans-serif;
+    font-family: "Roboto", sans-serif;
     color: #38624c;
     background-color: #f3f3eb;
     /* padding: 20px;
@@ -383,12 +383,13 @@ color: #4c6c52;*/
 
 
 .title {
-    font-family: 'Arial', sans-serif; /* Font không chân cho chữ in hoa */
+    font-family: 'Roboto', sans-serif; /* Font không chân cho chữ in hoa */
     font-size: 5vw; /* Kích thước lớn cho tiêu đề */
     font-weight: bold; /* Chữ đậm */
     color: #b22222; /* Màu đỏ đậm */
     margin: 0 0 0px 20px; /* Khoảng cách với cạnh và chữ xanh */
 }
+
 .subtitle {
     font-family: 'Dancing Script', cursive; /* Font viết tay */
     font-size: 6vw; /* Kích thước nhỏ hơn */
@@ -397,6 +398,45 @@ color: #4c6c52;*/
     margin-left: 20px; /* Khoảng cách với vạch dọc */
 }
 
+.group-combo .title {
+    font-size: 2.5vw;
+    background: #346b3c;
+    width: fit-content;
+    border-radius: 10px;
+    color: #ffffff;
+    font-weight: revert;
+}
+
+.group-combo .title-container {
+    padding: 20px 20px 0 20px;
+}
+
+.group-combo .subtitle {
+    font-family: 'Roboto', sans-serif;
+    font-size: 5vw;
+    font-weight: bolder;
+    color: #b22222;
+    margin: 0 0 0px 20px;
+}
+
+.group-combo .dish-name {
+    font-family: 'Franklin Gothic Heavy', sans-serif;
+    font-size: 4vw;
+}
+
+.group-combo .dish-note {
+    font-size: 3vw;
+    padding-left: 5vw;
+    font-weight: bold;
+    font-style: italic;
+}
+
+.group-combo .combo-des {
+    font-size: 24px;
+    padding-left: 4vw;
+    padding-right: 4vw;
+    color: black;
+}
 
 .group:nth-child(odd) .title {
     text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff;
