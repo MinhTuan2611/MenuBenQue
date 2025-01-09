@@ -23,42 +23,51 @@
         <img src="./images/menu-01-1.jpg" class="image-item" />
         <img src="./images/menu-01-2.jpg" class="image-item" />
     </div>
-    <div id="giaiMa" class="giai-ma">
-        <button id="btnGiaiMa" class="button btn-matma">
-            MẬT MÃ
-        </button>
-        @foreach (var groupCombo in groupComboes)
-        {
-        <div class="group-combo py-5 px-4">
-            <div class="title-container">
-                <div class="vertical-line"></div>
-                @if (groupCombo.Key.NhomCha != null)
-                {
-                        <div class="title px-4">@groupCombo.Key.NhomCha?.TenNhom</div>
-                    <div class="subtitle">@groupCombo.Key.TenNhom</div>
-                }
-                else
-                {
-                    <div class="title">@groupCombo.Key.TenNhom</div>
-                }
-            </div>
+    
+    <button id="btnGiaiMa" class="button btn-matma">
+        MẬT MÃ
+    </button>
+    @foreach (var groupCombo in groupComboes)
+    {
+    <div class="group-combo py-5 px-4">
+        <div class="title-container">
+            <div class="vertical-line"></div>
+            @if (groupCombo.Key.NhomCha != null)
+            {
+                    <div class="title px-4">@groupCombo.Key.NhomCha?.TenNhom</div>
+                <div class="subtitle">@groupCombo.Key.TenNhom</div>
+            }
+            else
+            {
+                <div class="title">@groupCombo.Key.TenNhom</div>
+            }
+        </div>
                 
                 
-            <div class="menu">
-                <ul>
-                @foreach (var combo in groupCombo)
-                {
-                    <div class="col mt-4">
-                        <div class="dish-name"><i class="fa fa-solid fa-star"></i> @combo.TenCombo</div>
-                        <div class="dish-note">(@combo.GhiChu)</div>
-                    </div>
-                    <div class="combo-des pt-3">
+        <div class="menu">
+            <ul>
+            @foreach (var combo in groupCombo)
+            {
+                <div class="col mt-4">
+                    <div class="dish-name"><i class="fa fa-solid fa-star"></i> @combo.TenCombo</div>
+                    <div class="dish-note">(@combo.GhiChu)</div>
+                </div>
+                        <div class="row align-items-center">
+                    <div class="combo-des col-9 col-xxl-7 pt-3">
                         @Html.Raw(combo.DanhSachMon.Replace("\n", "<br>").Replace("\r\n", "<br>"))
                     </div>
+                    @if (@combo.Tang != null)
+                    {
+                        <div class="gift col-3 col-xxl-5">@combo.Tang</div>
                     }
-                </ul>
-            </div>
-        </div>                }
+                                
+                </div>
+                    
+                }
+            </ul>
+        </div>
+    </div>            }
+    <div id="giaiMa" class="giai-ma">
         @foreach (var group in groupedData)
         {
             <div class="group">

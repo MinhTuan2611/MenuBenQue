@@ -281,14 +281,14 @@ color: #4c6c52;*/
 }
 
 .menu .dish-name {
-    font-size: 20px;
+    font-size: 30px;
     font-weight: bold;
     text-align: left;
     padding-right: 10px;
 }
 
 .menu .dish-note {
-    font-size: 18px;
+    font-size: 20px;
     color: #b22222;
     font-weight:normal;
     text-align: left;
@@ -301,7 +301,7 @@ color: #4c6c52;*/
 }
 
     .menu .dish-price .dish-price-detail {
-        font-size: 30px;
+        font-size: 40px;
         font-weight: bolder;
     }
 
@@ -432,7 +432,7 @@ color: #4c6c52;*/
 }
 
 .group-combo .combo-des {
-    font-size: 24px;
+    font-size: 40px;
     padding-left: 4vw;
     padding-right: 4vw;
     color: black;
@@ -482,5 +482,39 @@ color: #4c6c52;*/
     .image-item {
         height: 100vh;
         max-width: 48vw; /* Để chiều rộng tự động điều chỉnh theo nội dung */
+    }
+}
+.gift {
+    padding: 40px;
+    text-align: center;
+    border: 2px solid #b10f2e;
+    border-radius: 50%;
+    max-width: 450px !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    color: white;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #b10f2e;
+    font-size: 20px;
+}
+
+@media only screen and (max-width: 767px) {
+    .group-combo .combo-des {
+        font-size: 4vw;
+    }
+
+    .gift {
+        font-size: 3vw;
+    }
+
+    .group-combo .dish-name {
+        font-size: 4vw;
+    }
+
+    .group-combo .dish-note {
+        font-size: 3vw;
     }
 }
