@@ -398,6 +398,12 @@ color: #4c6c52;*/
     margin-left: 20px; /* Khoảng cách với vạch dọc */
 }
 
+
+.nhom-2 {
+    font-family: 'Roboto', sans-serif !important;
+    font-size: 4vw !important;
+}
+
 .group-combo .title {
     font-size: 2.5vw;
     background: #346b3c;

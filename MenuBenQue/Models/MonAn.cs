@@ -27,6 +27,9 @@ namespace ThuMuaHangWeb.Models
         public decimal? GiaMonKhuyenMai { get; set; }
         [Display(Name = "Nhóm món ăn", Prompt = "Nhập Nhóm món ăn", Description = "Nhóm món ăn")]
         public NhomMonAn NhomMonAn { get; set; }
+
+        [Display(Name = "Nhóm món ăn 2", Prompt = "Nhập Nhóm món ăn 2", Description = "Nhóm món ăn 2")]
+        public NhomMonAn? NhomMonAn2 { get; set; }
         [Display(Name = "Trạng thái")]
         public bool? Active { get; set;}
         [Display(Name = "Combo")]
@@ -52,6 +55,8 @@ namespace ThuMuaHangWeb.Models
         public decimal? GiaMonKhuyenMai { get; set; }
         
         public int NhomMonAn { get; set; }
+
+        public int? NhomMonAn2 { get; set; }
         public int? Order { get; set; }
         public List<MonAn>? MonCombo { get; set; }
         public bool? Active { get; set; } = true;

@@ -22,7 +22,13 @@ namespace ThuMuaHangWeb.Controllers
         {
             IIndex result = new IIndex()
             {
-                MonAns = await _context.MonAns.Include(m => m.NhomMonAn).Include(m => m.NhomMonAn.NhomCha).Where(m => m.Active == true).OrderBy(m => m.Order).ToListAsync(),
+                MonAns = await _context.MonAns
+                .Include(m => m.NhomMonAn)
+                .Include(m => m.NhomMonAn.NhomCha)
+                .Include(m => m.NhomMonAn2)
+                .Where(m => m.Active == true)
+                .OrderBy(m => m.Order)
+                .ToListAsync(),
                 Comboes = await _context.Combos
                 .Include(m => m.NhomMon)
                 .Include(m => m.NhomMon.NhomCha)

@@ -78,6 +78,7 @@ namespace MenuBenQue.Controllers
                 GiaMon = (decimal)IMonAn.GiaMon,
                 DonVi = IMonAn.DonVi,
                 NhomMonAn = _context.NhomMonAn.FirstOrDefault(n => n.NhomId == IMonAn.NhomMonAn),
+                NhomMonAn2 = _context.NhomMonAn.FirstOrDefault(n => n.NhomId == IMonAn.NhomMonAn2),
                 GiaMonKhuyenMai = IMonAn.GiaMonKhuyenMai,
                 MatMa = IMonAn.MatMa,
                 Order = IMonAn.Order,
@@ -129,6 +130,7 @@ namespace MenuBenQue.Controllers
                 GiaMon = (decimal)IMonAn.GiaMon,
                 DonVi = IMonAn.DonVi,
                 NhomMonAn = _context.NhomMonAn.FirstOrDefault(n => n.NhomId == IMonAn.NhomMonAn),
+                NhomMonAn2 = _context.NhomMonAn.FirstOrDefault(n => n.NhomId == IMonAn.NhomMonAn2),
                 GiaMonKhuyenMai = IMonAn.GiaMonKhuyenMai,
                 Active = IMonAn.Active,
                 UpdateDate = DateTime.Now
@@ -158,6 +160,7 @@ namespace MenuBenQue.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewBag.NhomMonAn = _context.NhomMonAn.Where(n => n.Active == true).ToList();
             return View(monAn);
         }
 

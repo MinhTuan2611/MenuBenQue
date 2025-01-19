@@ -2,7 +2,7 @@
   "Files": [
     {
       "Id": "D:\\SourceCode\\MenuBenQue\\MenuBenQue\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\MenuBenQue.bundle.scp.css",
-      "PackagePath": "staticwebassets\\MenuBenQue.bundle.scp.css"
+      "PackagePath": "staticwebassets\\MenuBenQue.3763uineqe.bundle.scp.css"
     },
     {
       "Id": "D:\\SourceCode\\MenuBenQue\\MenuBenQue\\wwwroot\\css\\StyleSheet.scss",
@@ -263,6 +263,10 @@
     {
       "Id": "D:\\SourceCode\\MenuBenQue\\MenuBenQue\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.MenuBenQue.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
     },
     {
       "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.MenuBenQue.Microsoft.AspNetCore.StaticWebAssets.props",

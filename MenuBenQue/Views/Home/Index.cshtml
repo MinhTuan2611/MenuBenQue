@@ -84,10 +84,15 @@
                     }
                 </div>
                 
-                
-                <div class="menu">
+                @{var groupMon = group.GroupBy(m => m.NhomMonAn2).OrderBy(m => m.Key == null ? 0 : 1).ThenBy(m => m.Key != null ? m.Key.Order : 0);}
+                @foreach (var nhomCon in groupMon) {
+                    if(nhomCon.Key != null) {
+                        <div class="subtitle nhom-2 pt-4">@nhomCon.Key.TenNhom</div>
+                    }
+
+                    <div class="menu">
                     <ul>
-                        @foreach (var mon in group)
+                        @foreach (var mon in nhomCon)
                         {
                             <li class="align-items-center">
                                 <span class="dish-name">
@@ -97,11 +102,12 @@
                                         <span class="dish-note">(@mon.GhiChu)</span>
                                     }
                                 </span>
-                                <span class="dish-price"> <span class="dish-price-detail">@ConvertGia(@mon.GiaMon)</span>k/@mon.DonVi</span>
+                                <span class="dish-price"> @if(mon.GiaMon ==0) {<span class="dish-price-detail">Thời Giá</span>}  else{<span class="dish-price-detail"> @ConvertGia(@mon.GiaMon)</span> <span>k</span>}/@mon.DonVi</span>
                             </li>
                         }
                     </ul>
                 </div>
+                }
             </div>
 
         }
@@ -126,17 +132,24 @@
                         <div class="title">@group.Key.TenNhomMatMa</div>
                     }
                 </div>
-                <div class="menu">
+                @{var groupMon = group.GroupBy(m => m.NhomMonAn2).OrderBy(m => m.Key == null ? 0 : 1).ThenBy(m => m.Key != null ? m.Key.Order : 0);}
+                @foreach (var nhomCon in groupMon) {
+                    if(nhomCon.Key != null) {
+                        <div class="subtitle nhom-2 pt-4">@nhomCon.Key.TenNhom</div>
+                    }
+
+                    <div class="menu">
                     <ul>
-                        @foreach (var mon in group)
+                        @foreach (var mon in nhomCon)
                         {
                             <li class="align-items-center">
                                 <span class="dish-name">@mon.MatMa</span>
-                                <span class="dish-price"> <span class="dish-price-detail">@ConvertGia(@mon.GiaMon)</span>k/@mon.DonVi</span>
+                                <span class="dish-price"> @if(mon.GiaMon ==0) {<span class="dish-price-detail">Thời Giá</span>}  else{<span class="dish-price-detail"> @ConvertGia(@mon.GiaMon)</span> <span>k</span>}/@mon.DonVi</span>
                             </li>
                         }
                     </ul>
                 </div>
+                }
             </div>
 
         }
