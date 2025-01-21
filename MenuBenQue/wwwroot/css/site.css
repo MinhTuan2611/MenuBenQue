@@ -297,13 +297,13 @@ color: #4c6c52;*/
 .menu .dish-price {
     text-align: right;
     color: #2d4739;
-    /*font-weight: bold;*/
+    min-width: 30vw;
 }
 
-    .menu .dish-price .dish-price-detail {
-        font-size: 40px;
-        font-weight: bolder;
-    }
+.menu .dish-price .dish-price-detail {
+    font-size: 40px;
+    font-weight: bolder;
+}
 
 
 
@@ -522,5 +522,18 @@ color: #4c6c52;*/
 
     .group-combo .dish-note {
         font-size: 3vw;
+    }
+
+    .menu .dish-name {
+        font-size: 4vw;
+    }
+
+    .menu .dish-note {
+        font-size: 3vw;
+    }
+
+    .menu .dish-price .dish-price-detail {
+        font-size: 4vw;
+        font-weight: bolder;
     }
 }

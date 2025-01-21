@@ -102,7 +102,27 @@
                                         <span class="dish-note">(@mon.GhiChu)</span>
                                     }
                                 </span>
-                                <span class="dish-price"> @if(mon.GiaMon ==0) {<span class="dish-price-detail">Thời Giá</span>}  else{<span class="dish-price-detail"> @ConvertGia(@mon.GiaMon)</span> <span>k</span>}/@mon.DonVi</span>
+                                <span class="dish-price"> 
+                                    @switch(mon.GiaMon)
+                                    {
+                                        case 0: 
+                                                <span class="dish-price-detail">Thời Giá /</span>
+                                                ;
+                                                break;
+                                        case -1:
+                                                <span class="dish-price-detail">Tùy loại /</span>
+                                                ;
+                                                break;
+                                        case -2:
+                                                <span class="dish-price-detail">Tặng</span>
+                                                ;
+                                                break;
+                                        default:
+                                                <span class="dish-price-detail"> @ConvertGia(@mon.GiaMon)</span><span>k /</span>
+                                                break;
+                                    }
+                                    @mon.DonVi
+                                </span>
                             </li>
                         }
                     </ul>
@@ -144,7 +164,26 @@
                         {
                             <li class="align-items-center">
                                 <span class="dish-name">@mon.MatMa</span>
-                                <span class="dish-price"> @if(mon.GiaMon ==0) {<span class="dish-price-detail">Thời Giá</span>}  else{<span class="dish-price-detail"> @ConvertGia(@mon.GiaMon)</span> <span>k</span>}/@mon.DonVi</span>
+                                <span class="dish-price"> 
+                                    @switch(mon.GiaMon)
+                                    {
+                                        case 0:
+                                                <span class="dish-price-detail">Thời Giá /</span>
+                                                ;
+                                                break;
+                                        case -1:
+                                                <span class="dish-price-detail">Tùy loại /</span>
+                                                ;
+                                                break;
+                                        case -2:
+                                                <span class="dish-price-detail">Tặng</span>
+                                                ;
+                                                break;
+                                        default:
+                                                <span class="dish-price-detail"> @ConvertGia(@mon.GiaMon)</span><span>k /</span>
+                                                break;
+                                    }@mon.DonVi
+                                </span>
                             </li>
                         }
                     </ul>
