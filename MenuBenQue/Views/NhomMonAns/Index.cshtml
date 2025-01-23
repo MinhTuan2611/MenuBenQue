@@ -15,11 +15,11 @@
 <table class="table table-bordered table-striped">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.TenNhom)
+            <th class="text-center">
+                STT
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Order)
+                @Html.DisplayNameFor(model => model.TenNhom)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Active)
@@ -28,26 +28,30 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.TenNhom)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Order)
-            </td>
-            @if (@item.Active == true)
-            {
-                <td>Đang bán</td>
-            }
-            else
-            {
-                <td>Ngừng bán</td>
-            }
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.NhomId"><i class="fa fa-pencil-square-o pe-2"></i></a>
-            </td>
-        </tr>
-}
+        @{
+            int stt = 1;
+        }
+        @foreach (var item in Model) {
+            <tr>
+                <td class="text-center">
+                    @stt
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TenNhom)
+                </td>
+                @if (@item.Active == true)
+                {
+                    <td>Đang bán</td>
+                }
+                else
+                {
+                    <td>Ngừng bán</td>
+                }
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.NhomId"><i class="fa fa-pencil-square-o pe-2"></i></a>
+                </td>
+            </tr>
+            stt++;
+        }
     </tbody>
 </table>

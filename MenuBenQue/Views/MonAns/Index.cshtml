@@ -15,6 +15,8 @@
 <table class="table table-bordered table-striped">
     <thead>
         <tr>
+            <th></th>
+            <th class="text-center">STT</th>
             <th>
                 @Html.DisplayNameFor(model => model.TenMon)
             </th>
@@ -23,12 +25,6 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.DonVi)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.NhomMonAn)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Order)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.GiaMonKhuyenMai)
@@ -40,46 +36,45 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.TenMon)
-            </td>
-            <td class="text-end">
-                @item.GiaMon.ToString("#,##0")
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DonVi)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NhomMonAn.TenNhom)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Order)
-            </td>
-            <td class="text-end">
-                 @item.GiaMonKhuyenMai?.ToString("#,##0")
-            </td>
-            
-            @if (@item.Active == true)
-            {
-                <td>Đang bán</td>
-            }
-            else
-            {
-                <td>Ngừng bán</td>
-            }
+        @{
+            int stt = 1; // Khởi tạo biến đếm STT
+        }
+        @foreach (var item in Model) 
+        {
 
-            <td>
-                    <a asp-action="Edit" asp-route-id="@item.MonId"><i class="fa fa-pencil-square-o pe-2"></i></a>
-                    @*<a asp-action="Delete" asp-route-id="@item.MonId" class="text-danger"><i class="fa fa-trash-o" aria-hidden="true"></i></a>*@
+            <tr>
+                <td class="text-center">
                     <a href="#" id="@item.MonId" data-product="@item.TenMon" class="btnDelete text-danger"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
-         @*       <a asp-action="Edit" asp-route-id="@item.MonId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.MonId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.MonId">Delete</a>*@
-            </td>
-        </tr>
-}
+                </td>
+                <td class="text-center">@stt</td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TenMon)
+                </td>
+                <td class="text-end">
+                    @item.GiaMon.ToString("#,##0")
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DonVi)
+                </td>
+                <td class="text-end">
+                        @item.GiaMonKhuyenMai?.ToString("#,##0")
+                </td>
+            
+                @if (@item.Active == true)
+                {
+                    <td>Đang bán</td>
+                }
+                else
+                {
+                    <td>Ngừng bán</td>
+                }
+
+                <td class="text-center">
+                    <a asp-action="Edit" asp-route-id="@item.MonId"><i class="fa fa-pencil-square-o pe-2"></i></a>
+                </td>
+            </tr>
+            stt++; 
+        }
     </tbody>
 </table>
 

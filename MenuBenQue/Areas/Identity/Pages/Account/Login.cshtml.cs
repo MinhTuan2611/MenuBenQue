@@ -135,13 +135,7 @@ namespace ThuMuaHangWeb.Areas.Identity.Pages.Account
                     _logger.LogInformation("User logged in.");
                     ViewData["LoginState"] = result.Succeeded;
                     var lstRoleOfUser = await _userManager.GetRolesAsync(user);
-                    if (lstRoleOfUser.Any() && lstRoleOfUser.FirstOrDefault() == PhanQuyen.NhaCungCap.ToString())
-                    {
-                        returnUrl = Url.Content("~/Orders");
-                    } else if (lstRoleOfUser.Any() && lstRoleOfUser.FirstOrDefault() == PhanQuyen.KeToan.ToString())
-                    {
-                        returnUrl = Url.Content("~/Receipts");
-                    }
+                    returnUrl = Url.Content("~/");
                     return LocalRedirect(returnUrl);
                 }
                 if (result.RequiresTwoFactor)

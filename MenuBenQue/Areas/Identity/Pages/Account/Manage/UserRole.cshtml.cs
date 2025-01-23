@@ -77,18 +77,7 @@ namespace ThuMuaHangWeb.Areas.Identity.Pages.Account.Manage.Users
                 return RedirectToPage("UserRole", new { userId = updateUserId});
             }
             var role = _roleManager.Roles.FirstOrDefault(r => r.Id == updateRoleId);
-            if (Enum.Parse<PhanQuyen>(role.Name) == PhanQuyen.NguoiDung || Enum.Parse<PhanQuyen>(role.Name) == PhanQuyen.QuanLy)
-            {
-                return RedirectToPage("UserBranch", new { userId = updateUserId });
-            } else if (Enum.Parse<PhanQuyen>(role.Name) == PhanQuyen.NhaCungCap)
-            {
-                return RedirectToPage("UserSupplier", new { userId = updateUserId });
-            } 
-            else
-            {
-                return RedirectToPage("ManageUserAuthority");
-            }
-            
+            return RedirectToPage("ManageUserAuthority");
         }
     }
 }

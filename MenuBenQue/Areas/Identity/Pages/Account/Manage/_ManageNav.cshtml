@@ -1,19 +1,23 @@
 ﻿@using ThuMuaHangWeb.Models
 @inject SignInManager<ApplicationUser> SignInManager
 @{
-   var hasExternalLogins = (await SignInManager.GetExternalAuthenticationSchemesAsync()).Any();
+    var hasExternalLogins = (await SignInManager.GetExternalAuthenticationSchemesAsync()).Any();
 }
-
-@if (SignInManager.IsSignedIn(User) && !string.IsNullOrEmpty(User.FindFirstValue(ClaimTypes.Role)))
+@if (SignInManager.IsSignedIn(User))
 {
     <ul class="nav nav-pills flex-column">
         <li class="nav-item"><a class="nav-link @ManageNavPages.IndexNavClass(ViewContext)" id="profile" asp-page="./Index">Hồ sơ</a></li>
         <li class="nav-item"><a class="nav-link @ManageNavPages.EmailNavClass(ViewContext)" id="email" asp-page="./Email">Email</a></li>
         <li class="nav-item"><a class="nav-link @ManageNavPages.ChangePasswordNavClass(ViewContext)" id="change-password" asp-page="./ChangePassword">Đổi mật khẩu</a></li>
-        @if (Enum.Parse<PhanQuyen>(User.FindFirstValue(ClaimTypes.Role)).Equals(PhanQuyen.Admin) 
-            || Enum.Parse<PhanQuyen>(User.FindFirstValue(ClaimTypes.Role)).Equals(PhanQuyen.QuanLy))
+@* 
+        @if (Enum.Parse<PhanQuyen>(User.FindFirstValue(ClaimTypes.Role)).Equals(PhanQuyen.Admin)
+
+              || Enum.Parse<PhanQuyen>(User.FindFirstValue(ClaimTypes.Role)).Equals(PhanQuyen.QuanLy))
+
         {
+
             <li class="nav-item"><a class="nav-link @ManageNavPages.ManageUserAuthorityNavClass(ViewContext)" id="user-authority" asp-page="./ManageUserAuthority">Phân quyền</a></li>
-        }
+
+        } *@
     </ul>
 }

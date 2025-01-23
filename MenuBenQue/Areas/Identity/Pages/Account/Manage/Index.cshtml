@@ -7,7 +7,7 @@
 }
 
 @inject SignInManager<ApplicationUser> SignInManager
-@if (SignInManager.IsSignedIn(User) && !string.IsNullOrEmpty(User.FindFirstValue(ClaimTypes.Role)))
+@if (SignInManager.IsSignedIn(User))
 {
     <h3>@ViewData["Title"]</h3>
     <partial name="_StatusMessage" for="StatusMessage" />
